@@ -91,8 +91,13 @@ De Story dibangun menggunakan fondasi **Tauri v2** dengan backend **Rust**, meng
 
 Sebelum menjalankan atau membangun De Story dari sumber kode, pastikan sistem Anda memenuhi persyaratan berikut:
 
-- **Sistem Operasi:** Windows 10/11 (64-bit), macOS 12+ (Apple Silicon / Intel), atau Linux (x64)
+- **Sistem Operasi:** Windows 10/11 (64-bit)
 - **Node.js:** Versi LTS (v18.0.0 atau lebih baru) & `npm`
+- **Python:** Versi LTS (Rekomendasi)
+- **FFmpeg:** Versi Terbaru
+
+Untuk Build Installer:
+
 - **Rust Toolchain:** Rust & Cargo versi 1.78.0 atau lebih baru ([instal via rustup](https://rustup.rs))
 - **Build Tools (Khusus Windows):** *Visual Studio C++ Build Tools* (termasuk Windows SDK) untuk kompilasi Rust & Whisper CPP.
 
