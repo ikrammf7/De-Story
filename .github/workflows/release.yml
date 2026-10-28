@@ -1,0 +1,75 @@
+name: Release & Multi-Platform Build
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-tauri:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'windows-latest'
+            os-name: 'windows'
+            rust-target: 'x86_64-pc-windows-msvc'
+          - platform: 'macos-latest'
+            os-name: 'macos-arm64'
+            rust-target: 'aarch64-apple-darwin'
+          - platform: 'macos-13'
+            os-name: 'macos-x64'
+            rust-target: 'x86_64-apple-darwin'
+          - platform: 'ubuntu-22.04'
+            os-name: 'linux'
+            rust-target: 'x86_64-unknown-linux-gnu'
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.rust-target }}
+
+      - name: Install Linux dependencies (Ubuntu only)
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf build-essential curl wget
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Checkout Flow2API source
+        run: git clone https://github.com/TheSmallHanCat/flow2api.git ../flow2api
+        shell: bash
+
+      - name: Stage Flow2API runtime for target OS
+        env:
+          FLOW2API_SOURCE: ${{ github.workspace }}/../flow2api
+        run: npm run flow2api:stage
+
+      - name: Build Tauri app & installers
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: 'De Story v__VERSION__'
+          releaseBody: 'Rilis multi-platform De Story v__VERSION__ (Windows .exe/.msi, macOS .dmg, Linux .deb/.AppImage).'
+          releaseDraft: true
+          prerelease: false
+          args: ${{ matrix.platform == 'ubuntu-22.04' && '--bundles deb,appimage' || '' }}

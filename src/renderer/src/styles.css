@@ -1,0 +1,183 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-paper: #faf7f2;
+  --color-surface: #ffffff;
+  --color-sand: #f3efe8;
+  --color-ink: #1f1d1a;
+  --color-ink-2: #57524a;
+  --color-muted: #6b665e;
+  --color-line: #e6dfd3;
+  --color-line-2: #d4cbbb;
+  --color-line-3: #bfb5a4;
+  --color-accent: #c93a1b;
+  --color-accent-dark: #9e2c13;
+  --color-accent-soft: #fff6f2;
+  --color-sun: #ffc93c;
+  --color-sun-soft: #fff1c7;
+  --color-sun-ink: #6b4e00;
+  --color-ok-soft: #e1f0dd;
+  --color-ok-ink: #25572b;
+  --color-info-soft: #e3ecf8;
+  --color-info-ink: #1e4a7a;
+  --color-bad-soft: #fbe3e1;
+  --color-bad-ink: #8a1f14;
+  --color-draft: #efeae2;
+
+  --font-display: 'Bricolage Grotesque Variable', 'Segoe UI', sans-serif;
+  --font-sans: 'Plus Jakarta Sans Variable', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', Consolas, monospace;
+
+  --shadow-ink: 2px 2px 0 #1f1d1a;
+  --shadow-ink-md: 3px 3px 0 #1f1d1a;
+  --shadow-ink-lg: 4px 4px 0 #1f1d1a;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../../resources/fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../../resources/fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../../resources/fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../../resources/fonts/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+}
+
+/* Caption fonts (the same files libass uses for the export). */
+@font-face {
+  font-family: 'Anton';
+  src: url('../../../resources/fonts/Anton-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../../resources/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Archivo Black';
+  src: url('../../../resources/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lilita One';
+  src: url('../../../resources/fonts/LilitaOne-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Titan One';
+  src: url('../../../resources/fonts/TitanOne-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Luckiest Guy';
+  src: url('../../../resources/fonts/LuckiestGuy-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../../../resources/fonts/ComicNeue-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Chewy';
+  src: url('../../../resources/fonts/Chewy-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bubblegum Sans';
+  src: url('../../../resources/fonts/BubblegumSans-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Boogaloo';
+  src: url('../../../resources/fonts/Boogaloo-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sniglet';
+  src: url('../../../resources/fonts/Sniglet-ExtraBold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bangers';
+  src: url('../../../resources/fonts/Bangers-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Permanent Marker';
+  src: url('../../../resources/fonts/PermanentMarker-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  src: url('../../../resources/fonts/DMSerifDisplay-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+  button:not(:disabled),
+  [role='button'] {
+    cursor: pointer;
+  }
+  ::selection {
+    background: var(--color-sun);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  input[type='range'] {
+    accent-color: var(--color-accent);
+  }
+}
+
+@layer utilities {
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-2) transparent;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse-soft {
+  50% {
+    opacity: 0.55;
+  }
+}

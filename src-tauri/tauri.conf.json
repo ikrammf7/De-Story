@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "De Story",
+  "version": "1.1.0",
+  "identifier": "com.ikrammf7.destory",
+  "build": {
+    "beforeDevCommand": "npm run dev:vite",
+    "beforeBuildCommand": "npm run build:vite",
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "De Story",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 1180,
+        "minHeight": 720,
+        "backgroundColor": "#FAF7F2",
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self' ipc: http://ipc.localhost; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' studio: http://studio.localhost data: blob: https:; media-src 'self' studio: http://studio.localhost blob: https:; font-src 'self' studio: http://studio.localhost data:; connect-src 'self' studio: http://studio.localhost ws: ipc: http://ipc.localhost http://localhost:* ws://localhost:*"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/64x64.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [
+      "../resources/fonts/*",
+      "../resources/whisper/*",
+      "flow2api/**/*"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "styles": [
+    {"id":"karaoke","name":"Karaoke","font":"Poppins","weight":800,"size":0.058,"color":"#FAF7F2","highlight":"#FFC93C","box":"#1F1D1A","boxAlpha":0.92,"outline":0,"outlineColor":"#1F1D1A","uppercase":false},
+    {"id":"tebal","name":"Tebal","font":"Poppins","weight":800,"size":0.07,"color":"#FFFFFF","highlight":"#FFC93C","box":null,"boxAlpha":0,"outline":0.006,"outlineColor":"#1F1D1A","uppercase":true},
+    {"id":"minimal","name":"Minimal","font":"Poppins","weight":600,"size":0.046,"color":"#1F1D1A","highlight":"#C93A1B","box":"#FAF7F2","boxAlpha":0.94,"outline":0,"outlineColor":"#FAF7F2","uppercase":false},
+    {"id":"subtitle","name":"Subtitle","font":"Poppins","weight":500,"size":0.042,"color":"#FFFFFF","highlight":"#FFFFFF","box":"#1F1D1A","boxAlpha":0.72,"outline":0,"outlineColor":"#1F1D1A","uppercase":false}
+  ],
+  "sizeScale": {"kecil":0.82,"sedang":1,"besar":1.2},
+  "fonts": [
+    {"id":"poppins","name":"Poppins","family":"Poppins","cell":1.762,"group":"Tegas & modern","file":"Poppins-Bold.ttf"},
+    {"id":"anton","name":"Anton","family":"Anton","cell":1.733,"group":"Tegas & modern","file":"Anton-Regular.ttf"},
+    {"id":"bebas","name":"Bebas Neue","family":"Bebas Neue","cell":1.3,"group":"Tegas & modern","file":"BebasNeue-Regular.ttf"},
+    {"id":"archivo","name":"Archivo Black","family":"Archivo Black","cell":1.347,"group":"Tegas & modern","file":"ArchivoBlack-Regular.ttf"},
+    {"id":"luckiest","name":"Luckiest Guy","family":"Luckiest Guy","cell":1.226,"group":"Kartun & komik","file":"LuckiestGuy-Regular.ttf"},
+    {"id":"bangers","name":"Bangers","family":"Bangers","cell":1.757,"group":"Kartun & komik","file":"Bangers-Regular.ttf"},
+    {"id":"comicneue","name":"Comic Neue","family":"Comic Neue","cell":1.35,"group":"Kartun & komik","file":"ComicNeue-Bold.ttf"},
+    {"id":"chewy","name":"Chewy","family":"Chewy","cell":1.282,"group":"Kartun & komik","file":"Chewy-Regular.ttf"},
+    {"id":"bubblegum","name":"Bubblegum Sans","family":"Bubblegum Sans","cell":1.163,"group":"Kartun & komik","file":"BubblegumSans-Regular.ttf"},
+    {"id":"boogaloo","name":"Boogaloo","family":"Boogaloo","cell":1.189,"group":"Kartun & komik","file":"Boogaloo-Regular.ttf"},
+    {"id":"sniglet","name":"Sniglet","family":"Sniglet","cell":1.245,"group":"Kartun & komik","file":"Sniglet-ExtraBold.ttf"},
+    {"id":"titan","name":"Titan One","family":"Titan One","cell":1.145,"group":"Kartun & komik","file":"TitanOne-Regular.ttf"},
+    {"id":"lilita","name":"Lilita One","family":"Lilita One","cell":1.143,"group":"Kartun & komik","file":"LilitaOne-Regular.ttf"},
+    {"id":"marker","name":"Permanent Marker","family":"Permanent Marker","cell":1.427,"group":"Tulisan tangan & elegan","file":"PermanentMarker-Regular.ttf"},
+    {"id":"dmserif","name":"DM Serif Display","family":"DM Serif Display","cell":1.371,"group":"Tulisan tangan & elegan","file":"DMSerifDisplay-Regular.ttf"}
+  ],
+  "poppinsFiles": {"500":"Poppins-Medium.ttf","600":"Poppins-SemiBold.ttf","700":"Poppins-Bold.ttf","800":"Poppins-ExtraBold.ttf"},
+  "boxRadius":0.4,
+  "maxWidth":0.84,
+  "boxPad":0.32,
+  "poppinsCell":1.762
+}

@@ -1,0 +1,42 @@
+{
+  "name": "de-story",
+  "productName": "De Story",
+  "version": "1.1.0",
+  "description": "Ubah ide cerita jadi video YouTube: klip, naskah, suara, dan timeline dalam satu aplikasi desktop.",
+  "author": "ikram.mf7 (original by Bang Tutorial)",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "dev:vite": "vite",
+    "build": "vite build",
+    "build:vite": "vite build",
+    "preview": "vite preview",
+    "flow2api:stage": "node scripts/flow2api/stage.mjs",
+    "flow2api:smoke": "node scripts/flow2api/smoke.mjs",
+    "tauri:dev": "npm run flow2api:stage && tauri dev",
+    "tauri:build": "npm run flow2api:stage && tauri build",
+    "typecheck": "tsc --noEmit -p tsconfig.web.json"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.12.4",
+    "ffmpeg-static": "^5.3.0"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tauri-apps/cli": "^2.12.3",
+    "@types/node": "^24.9.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "lucide-react": "^1.60.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.6",
+    "zustand": "^5.0.15"
+  }
+}

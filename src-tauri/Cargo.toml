@@ -1,0 +1,59 @@
+[package]
+name = "de-story"
+version = "1.1.0"
+description = "De Story Desktop Studio"
+edition = "2021"
+authors = ["ikram.mf7", "Bang Tutorial"]
+
+[build-dependencies]
+tauri-build = { version = "2.2", features = [] }
+
+[dependencies]
+tauri = { version = "2.2", features = ["tray-icon"] }
+tauri-plugin-single-instance = "2.2"
+
+tokio = { version = "1.43", features = ["full"] }
+tokio-util = "0.7"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+rusqlite = { version = "0.32", features = ["bundled", "blob", "backup"] }
+
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "rustls-tls", "multipart"] }
+
+ttf-parser = "0.25"
+sha2 = "0.10"
+uuid = { version = "1.13", features = ["v4", "fast-rng"] }
+regex = "1.11"
+urlencoding = "2.1"
+mime_guess = "2.0"
+rfd = "0.15"
+arboard = "3.4"
+open = "5.3"
+tempfile = "3.17"
+unicode-normalization = "0.1"
+strsim = "0.11"
+dirs = "6.0"
+which = "7.0"
+base64 = "0.22"
+aes-gcm = "0.10"
+chrono = { version = "0.4", features = ["serde"] }
+num_cpus = "1.16"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = [
+    "Win32_Security_Cryptography",
+    "Win32_Foundation",
+    "Win32_System_Memory",
+    "Win32_System_JobObjects",
+    "Win32_System_Threading"
+] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+keyring = { version = "3.6", default-features = false, features = ["apple-native"] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+keyring = { version = "3.6", default-features = false, features = ["sync-secret-service"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
