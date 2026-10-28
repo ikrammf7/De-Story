@@ -1,9 +1,3 @@
-# De Story v1.1.0
-
-<p align="center">
-  <img src="resources/icons/128x128.png" alt="De Story Logo" width="80" height="80" />
-</p>
-
 <p align="center">
   <strong>Desktop AI Video Studio</strong><br />
   Ubah ide cerita menjadi video YouTube & YouTube Shorts lengkap: naskah otomatis, visual AI, suara narator, subtitle karaoke dinamis, dan editor timeline dalam satu aplikasi desktop super ringan.
