@@ -14,13 +14,6 @@
 
 ---
 
-### 📌 Kredit & Atribusi Proyek
-- **Developer / Modified by:** **ikram.mf7**
-- **Original Base Project:** **Bang Story** oleh **Bang Tutorial**
-- *Aplikasi De Story v1.1.0 dibangun dan dimodifikasi berbasis proyek original Bang Story dengan peningkatan arsitektur, isolasi keamanan, dan alur kerja pembuatan video otomatis.*
-
----
-
 ## 📖 Daftar Isi
 
 1. [Tentang De Story](#-tentang-de-story)
@@ -285,5 +278,5 @@ de-story/
 ## 📄 Lisensi & Kredit
 
 - **Modifikasi & Pengembangan:** [ikram.mf7](https://github.com/ikrammf7)
-- **Proyek Original:** [Bang Story](https://github.com) oleh **Bang Tutorial**
+- **Proyek Original:** [Bang Story](https://github.com/bangtutorial/bang-story) oleh **Bang Tutorial**
 - Didukung oleh komunitas open-source luar biasa: [Tauri](https://tauri.app/), [Rust](https://www.rust-lang.org/), [React](https://react.dev/), [whisper.cpp](https://github.com/ggerganov/whisper.cpp), dan [FFmpeg](https://ffmpeg.org/).
