@@ -18,15 +18,15 @@ jobs:
           - platform: 'windows-latest'
             os-name: 'windows'
             rust-target: 'x86_64-pc-windows-msvc'
+            args: ''
           - platform: 'macos-latest'
             os-name: 'macos-arm64'
             rust-target: 'aarch64-apple-darwin'
-          - platform: 'macos-13'
-            os-name: 'macos-x64'
-            rust-target: 'x86_64-apple-darwin'
+            args: '--target aarch64-apple-darwin'
           - platform: 'ubuntu-22.04'
             os-name: 'linux'
             rust-target: 'x86_64-unknown-linux-gnu'
+            args: '--bundles deb,appimage'
 
     runs-on: ${{ matrix.platform }}
 
@@ -60,7 +60,7 @@ jobs:
         run: npm run flow2api:stage
 
       - name: Build Tauri app & installers
-        uses: tauri-apps/tauri-action@v0
+        uses: tauri-apps/tauri-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -69,4 +69,4 @@ jobs:
           releaseBody: 'Rilis multi-platform De Story v__VERSION__ (Windows .exe/.msi, macOS .dmg, Linux .deb/.AppImage).'
           releaseDraft: false
           prerelease: false
-          args: ${{ matrix.platform == 'ubuntu-22.04' && '--bundles deb,appimage' || '' }}
+          args: ${{ matrix.args }}

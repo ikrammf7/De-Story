@@ -6,6 +6,7 @@
   "author": "ikram.mf7 (original by Bang Tutorial)",
   "private": true,
   "scripts": {
+    "tauri": "tauri",
     "dev": "vite",
     "dev:vite": "vite",
     "build": "vite build",
