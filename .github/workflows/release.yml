@@ -5,6 +5,7 @@ on:
   push:
     tags:
       - 'v*'
+      - 'De-Story-v*'
 
 jobs:
   build-tauri:
@@ -48,18 +49,14 @@ jobs:
         if: matrix.platform == 'ubuntu-22.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf build-essential curl wget
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf build-essential curl wget libssl-dev libdbus-1-dev
 
       - name: Install npm dependencies
         run: npm install
 
-      - name: Checkout Flow2API source
-        run: git clone https://github.com/TheSmallHanCat/flow2api.git ../flow2api
-        shell: bash
-
       - name: Stage Flow2API runtime for target OS
         env:
-          FLOW2API_SOURCE: ${{ github.workspace }}/../flow2api
+          FLOW2API_SOURCE: ${{ github.workspace }}/flow2api-src
         run: npm run flow2api:stage
 
       - name: Build Tauri app & installers
@@ -70,6 +67,6 @@ jobs:
           tagName: v__VERSION__
           releaseName: 'De Story v__VERSION__'
           releaseBody: 'Rilis multi-platform De Story v__VERSION__ (Windows .exe/.msi, macOS .dmg, Linux .deb/.AppImage).'
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
           args: ${{ matrix.platform == 'ubuntu-22.04' && '--bundles deb,appimage' || '' }}

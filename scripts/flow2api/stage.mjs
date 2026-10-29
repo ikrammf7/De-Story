@@ -616,8 +616,11 @@ async function main() {
     warn(`cross-staging ${target} on ${hostTarget}: the result CANNOT be executed here.`);
   }
 
+  const repoFlowSrc = path.join(REPO_ROOT, 'flow2api-src');
   const sourceRoot = path.resolve(
-    options.source || process.env.FLOW2API_SOURCE || (process.platform === 'win32' ? 'E:\\Tools\\flow2api' : ''),
+    options.source ||
+      process.env.FLOW2API_SOURCE ||
+      (fs.existsSync(repoFlowSrc) ? repoFlowSrc : (process.platform === 'win32' ? 'E:\\Tools\\flow2api' : '')),
   );
   if (!sourceRoot || !fs.existsSync(path.join(sourceRoot, 'embedded_main.py'))) {
     fail(

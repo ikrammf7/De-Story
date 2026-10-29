@@ -151,6 +151,23 @@ pub fn whisper_cli_dir(resource_dir: Option<&Path>) -> PathBuf {
     PathBuf::from("resources/whisper")
 }
 
+pub fn whisper_cli_path(resource_dir: Option<&Path>) -> PathBuf {
+    let dir = whisper_cli_dir(resource_dir);
+    let exe = dir.join("whisper-cli.exe");
+    if exe.exists() {
+        return exe;
+    }
+    let unix_bin = dir.join("whisper-cli");
+    if unix_bin.exists() {
+        return unix_bin;
+    }
+    if cfg!(windows) {
+        exe
+    } else {
+        unix_bin
+    }
+}
+
 pub fn ffmpeg_path(resource_dir: Option<&Path>) -> PathBuf {
     if let Ok(p) = std::env::var("FFMPEG_PATH") {
         if !p.is_empty() {
@@ -161,18 +178,35 @@ pub fn ffmpeg_path(resource_dir: Option<&Path>) -> PathBuf {
         return path;
     }
     if let Some(res) = resource_dir {
-        for sub in &["resources/ffmpeg.exe", "resources/bin/ffmpeg.exe", "ffmpeg.exe", "bin/ffmpeg.exe"] {
+        for sub in &[
+            "resources/ffmpeg.exe",
+            "resources/bin/ffmpeg.exe",
+            "ffmpeg.exe",
+            "bin/ffmpeg.exe",
+            "resources/ffmpeg",
+            "resources/bin/ffmpeg",
+            "ffmpeg",
+            "bin/ffmpeg",
+        ] {
             let p = res.join(sub);
             if p.exists() {
                 return p;
             }
         }
     }
-    for dev in &["resources/ffmpeg.exe", "../resources/ffmpeg.exe", "node_modules/ffmpeg-static/ffmpeg.exe", "../node_modules/ffmpeg-static/ffmpeg.exe", r"C:\Program Files\ffmpeg\bin\ffmpeg.exe"] {
+    for dev in &[
+        "resources/ffmpeg.exe",
+        "../resources/ffmpeg.exe",
+        "node_modules/ffmpeg-static/ffmpeg.exe",
+        "../node_modules/ffmpeg-static/ffmpeg.exe",
+        r"C:\Program Files\ffmpeg\bin\ffmpeg.exe",
+        "resources/ffmpeg",
+        "../resources/ffmpeg",
+    ] {
         let p = PathBuf::from(dev);
         if p.exists() {
             return p.canonicalize().unwrap_or(p);
         }
     }
-    PathBuf::from("ffmpeg.exe")
+    PathBuf::from(if cfg!(windows) { "ffmpeg.exe" } else { "ffmpeg" })
 }

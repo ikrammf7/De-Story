@@ -9,7 +9,7 @@ use sha2::{Digest, Sha256};
 use tauri::{AppHandle, Emitter};
 use tokio::process::Command;
 
-use crate::paths::{ffmpeg_path, whisper_cli_dir, whisper_model_path};
+use crate::paths::{ffmpeg_path, whisper_cli_dir, whisper_cli_path, whisper_model_path};
 use crate::speech::align::{align_words, split_heard, Heard, WordTiming};
 
 const _MODEL_FILE: &str = "ggml-small.bin";
@@ -71,7 +71,7 @@ impl WhisperManager {
 
     pub fn is_ready(&self, resource_dir: Option<&Path>) -> bool {
         let m = self.status();
-        let cli = whisper_cli_dir(resource_dir).join("whisper-cli.exe");
+        let cli = whisper_cli_path(resource_dir);
         m.state == "ready" && cli.exists()
     }
 
@@ -219,8 +219,7 @@ pub async fn recognize_audio(
     tmp_dir: &Path,
 ) -> Result<Vec<Heard>, String> {
     let ffmpeg = ffmpeg_path(resource_dir);
-    let cli_dir = whisper_cli_dir(resource_dir);
-    let cli_exe = cli_dir.join("whisper-cli.exe");
+    let cli_exe = whisper_cli_path(resource_dir);
     let model = whisper_model_path();
 
     if !model.exists() || !cli_exe.exists() {

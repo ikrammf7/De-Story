@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengaturan Flow2API Captcha Worker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f7f8fa;
+      color: #111827;
+    }
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #0f172a;
+    }
+    p {
+      color: #4b5563;
+      line-height: 1.5;
+      font-size: 14px;
+      margin: 0 0 16px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .badge.connected {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    .badge.disconnected {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .badge.connected .badge-dot {
+      background: #22c55e;
+    }
+    .badge.disconnected .badge-dot {
+      background: #ef4444;
+    }
+    label {
+      display: block;
+      margin: 16px 0 6px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #374151;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.15s;
+    }
+    input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+    .hint {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+    .hint-alert {
+      color: #b45309;
+      font-weight: 500;
+    }
+    button {
+      margin-top: 24px;
+      border: 0;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .status {
+      margin-top: 12px;
+      min-height: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    code {
+      background: #f1f5f9;
+      color: #0f172a;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <h1>Flow2API Captcha Worker</h1>
+      <p>Ekstensi lokal untuk menghasilkan token reCAPTCHA Enterprise otomatis dari sesi Google Flow.</p>
+
+      <div id="connBadge" class="badge disconnected">
+        <span class="badge-dot"></span>
+        <span id="connText">Status: Memeriksa koneksi...</span>
+      </div>
+
+      <label for="serverUrl">WebSocket URL</label>
+      <input id="serverUrl" type="text" placeholder="ws://127.0.0.1:8765/captcha_ws">
+      <div class="hint">Alamat WebSocket Flow2API lokal (default Bang Story: <code>ws://127.0.0.1:8765/captcha_ws</code>).</div>
+
+      <label for="apiKey">API Key</label>
+      <input id="apiKey" type="password" placeholder="API Key dari Pengaturan Sistem Flow2API">
+      <div class="hint">Masukkan API Key yang ada di menu Pengaturan Sistem Flow2API (default: <code>1234567</code>) atau Kunci Ekstensi.</div>
+
+      <label for="routeKey">Kunci Rute (Route Key)</label>
+      <input id="routeKey" type="text" placeholder="Kosongkan jika hanya 1 akun Google Flow">
+      <div class="hint hint-alert">⚠️ PERHATIAN: Jika hanya menggunakan 1 akun, biarkan KOSONG (jangan diisi nomor port 8765!). Hanya diisi jika Anda mengonfigurasi multi-akun di Token Management.</div>
+
+      <label for="clientLabel">Client Label (Opsional)</label>
+      <input id="clientLabel" type="text" placeholder="Contoh: flow-ikramfik007">
+      <div class="hint">Label pengenal browser ini di log server Flow2API.</div>
+
+      <button id="saveBtn" type="button">Simpan Pengaturan</button>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
